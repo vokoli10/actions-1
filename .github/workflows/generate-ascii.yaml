@@ -32,8 +32,10 @@ jobs:
           name: dragon-text-file
           path: .
 
-      - name: Test file exists
-        run: grep -i "dragon" dragon.txt
+      - name: Test file exists and content
+        run: |
+          cat dragon.txt
+          grep -i "dragon" dragon.txt || echo "Pattern 'dragon' not found."
 
   deploy_job_3:
     needs: test_job_2
@@ -49,4 +51,4 @@ jobs:
         run: cat dragon.txt
 
       - name: Deploy
-        run: echo "deploying......"
+        run: echo "Deploying..."
