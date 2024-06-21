@@ -1,19 +1,29 @@
-name: My first workflow
+name: Generate ASCII network
 
-on: push
+on: 
+  push
 
 jobs: 
-    first_job:
-        runs-on: ubuntu-latest
-        steps:
-         - name: checkout repo
-           uses: actions/checkout@v4 
+  ascii_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4 
 
-         - name: welcome message
-           run: |
-             echo "my first Github actions Job"
-             ls -ltra
-             cat README.md
-         - name: Generate ASCII Artwork
-           run: cowsay -f dragon "Run for cover, I am a DRAGON .....RAWR!">> dragon.txt
-          
+      - name: List Repo files
+        run: ls -ltra
+
+      - name: Print working directory
+        run: pwd
+
+      - name: Check if ascii-script.sh exists
+        run: |
+          if [ -f ./ascii-script.sh ]; then
+            echo "ascii-script.sh found"
+          else
+            echo "ascii-script.sh not found"
+            exit 1
+          fi
+            
+      - name: Executing shell script
+        run: ./ascii-script.sh
