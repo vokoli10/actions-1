@@ -1,7 +1,9 @@
 name: Generate ASCII network
 
 on: 
-  push
+    schedule:
+      - cron: "*/1 * * * *" 
+ # push
 
 jobs: 
   ascii_job:
