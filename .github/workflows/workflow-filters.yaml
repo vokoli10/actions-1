@@ -19,6 +19,6 @@ on:
 
 jobs:
     hello:
-      runs-on: ububuntu-latest
+      runs-on: ubuntu-latest
       steps: 
        - run: echo this workflow/jobstep is executed for the event type - ${{ github.event }}
